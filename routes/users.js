@@ -2,16 +2,6 @@ const express = require("express");
 const db = require("../database"); 
 const router = express.Router()
 
-router.get("/", (req,res) =>{
-    res.send("home")
-      
-})
-
-
-router.post("/", (req,res) =>{
-    res.send("home 2")
-      
-})
 
 router.post("/register", (req,res) =>{
     const {username,password,email,phone_number,bloodgroup,DOB,address,city,state,pincode} = req.body;
@@ -64,7 +54,7 @@ router.post("/donor_form/:user_id", (req,res) =>{
 
   db.query(query, [user_id, units, disease, donated_date], (err) => {
     if (err) {
-      console.error("fail tp add in database:", err);
+      console.error("fail to add in database:", err);
       return res.status(500).json({ message: "Database error" });
     }
     res.json(req.body);
